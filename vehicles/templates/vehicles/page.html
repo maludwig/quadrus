@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=Exo:400,700|Titillium+Web:400,700' rel='stylesheet' type='text/css'>
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Vehicles</a></li><li><a href="/orders">Orders</a></li>
+        </ul>
+    </nav>
+    <div id="content">
+        {% block content %}No content to display.{% endblock %}
+    </div>
+    <footer>
+        The images and data used on this website is not affiliated with Lexus at all.
+        I have no idea if any of these prices are even remotely accurate.
+        If you want to ACTUALLY buy a Lexus, why are you on a site called "QuadrusPracticum.com"?!
+        If you're part of the Lexus legal team, you can <a href="mailto:mitchell.ludwig@gmail.com">e-mail me</a> if you want me to bring the site down.
+        I'm so sorry. I think your cars are probably awesome. <3
+    </footer>
+</body>
+</html>

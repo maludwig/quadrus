@@ -6,10 +6,11 @@ Simply visit http://quadruspracticum.com/
 
 ## Running the code
 
-To run the code, you'll need to install Django 1.7, and Python 2.7
+To run the code, you'll need to install Python 2.7, Django 1.7, and Pillow
 
 ```
 pip install Django==1.7
+pip install pillow
 ```
 
 Then, simply navigate to the directory containing manage.py, and run:

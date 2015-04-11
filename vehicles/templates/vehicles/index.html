@@ -1,0 +1,20 @@
+{% extends "vehicles/page.html" %}
+{% block content %}
+{% if vehicle_list %}
+    <section class="vehicle-container">
+        {# This code doesn't look very pretty, because having any whitespace between articles will render that whitespace. Pardon the formatting. #}
+        {% for v in vehicle_list %}<article class="vehicle-tile">
+                <img class="vehicle-image" src="{{ v.image.url }}" />
+                <div>
+                    <span class="vehicle-make">{{ v.make }} - </span><span class="vehicle-model">{{ v.model }}</span>
+                </div>
+                <span class="vehicle-price">{{ v.formatted_price }}</span>
+                <p class="vehicle-description">
+                    {{ v.description }}
+                </p>
+            </article>{% endfor %}
+    </section>
+{% else %}
+    <p>No question list</p>
+{% endif %}
+{% endblock %}
