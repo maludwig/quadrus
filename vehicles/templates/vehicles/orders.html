@@ -1,61 +1,84 @@
 {% extends "vehicles/page.html" %}
+{% load staticfiles %}
+
+{% block head %}
+    <script src="{% static 'js/jquery.cookie.js' %}"></script>
+    <script src="{% static 'js/jquery-postlinks.js' %}"></script>
+{% endblock %}
+
 {% block content %}
-<section class="col-md-6 open-order-container">
-    <h3>Open</h3>
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Vehicle</th>
-                <th>Ordered</th>
-                <th>Complete</th>
-            </tr>
-        </thead>
-        {% if open_orders %}
-            <tbody>
-                {% for oo in open_orders %}
-                    <tr>
-                        <th scope="row">{{ oo }}</th>
-                        <td>{{ oo.customer }}</td>
-                        <td>{{ oo.vehicle }}</td>
-                        <td>{{ oo.order_date }}</td>
-                        <td><a class="post-request" data-reload="true" href="{% url 'vehicles:fill' oo.pk %}"><i class="fa fa-check-square-o"></i></a></td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        {% else %}
-            <p>No open orders found</p>
-        {% endif %}
-    </table>
-</section>
-{% if completed_orders %}
-    <section class="col-md-6 completed-order-container">
-        <h3>Completed</h3>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Vehicle</th>
-                    <th>Ordered</th>
-                    <th>Built</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for co in completed_orders %}
-                    <tr>
-                        <th scope="row">{{ co }}</th>
-                        <td>{{ co.customer }}</td>
-                        <td>{{ co.vehicle }}</td>
-                        <td>{{ co.order_date }}</td>
-                        <td>{{ co.built_date }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+<div class="row">
+    <section class="col-md-6">
+        <div id="open-orders" class="order-container">
+            <div class="table-responsive">
+                <p class="small-device">Scroll table to see all data</p>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th><h3>Open</h3></th>
+                        </tr>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Vehicle</th>
+                            <th>Ordered</th>
+                            <th>Complete</th>
+                        </tr>
+                    </thead>
+                    {% if open_orders %}
+                        <tbody>
+                            {% for oo in open_orders %}
+                                <tr>
+                                    <th scope="row">{{ oo }}</th>
+                                    <td>{{ oo.customer }}</td>
+                                    <td>{{ oo.vehicle }}</td>
+                                    <td>{{ oo.order_date.date }}</td>
+                                    <td><a class="post-request" data-reload="true" href="{% url 'vehicles:fill' oo.pk %}"><i class="fa fa-check-square-o"></i></a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    {% else %}
+                        <p>No open orders found</p>
+                    {% endif %}
+                </table>
+            </div>
+        </div>
     </section>
-{% else %}
-    <p>No completed orders found</p>
-{% endif %}
+    <section class="col-md-6">
+        <div id="completed-orders" class="order-container">
+            <div class="table-responsive">
+                <p class="small-device">Scroll table to see all data</p>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th><h3>Completed</h3></th>
+                        </tr>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Vehicle</th>
+                            <th>Ordered</th>
+                            <th>Built</th>
+                        </tr>
+                    </thead>
+                    {% if completed_orders %}
+                        <tbody>
+                            {% for co in completed_orders %}
+                                <tr>
+                                    <th scope="row">{{ co }}</th>
+                                    <td>{{ co.customer }}</td>
+                                    <td>{{ co.vehicle }}</td>
+                                    <td>{{ co.order_date.date }}</td>
+                                    <td>{{ co.built_date.date }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    {% else %}
+                        <p>No completed orders found</p>
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
 {% endblock %}

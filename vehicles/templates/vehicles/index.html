@@ -1,9 +1,26 @@
 {% extends "vehicles/page.html" %}
+{% load staticfiles %}
+
+{% block head %}
+    <script src="{% static 'js/jquery.filter.js' %}"></script>
+{% endblock %}
+
 {% block content %}
 {% if vehicle_list %}
+    <section class="filter-container">
+        <select class="filter">
+            <option value="">All</option>
+            <option value="hybrid">Hybrid</option>
+            <option value="gas">Gas</option>
+            <option value="electric">Electric</option>
+        </select>
+    </section>
     <section class="vehicle-container">
         {# This code doesn't look very pretty, because having any whitespace between articles will render that whitespace. Pardon the formatting. #}
-        {% for v in vehicle_list %}<article class="vehicle-tile">
+        {% for v in vehicle_list %}<article class="vehicle-tile {{ v.get_type_display }}">
+                <div class="vehicle-type">
+                    <i class="fa fa-{{ v.icon }}"></i>
+                </div>
                 <img class="vehicle-image" src="{{ v.image.url }}" />
                 <div>
                     <span class="vehicle-make">{{ v.make }} - </span><span class="vehicle-model">{{ v.model }}</span>
@@ -15,6 +32,6 @@
             </article>{% endfor %}
     </section>
 {% else %}
-    <p>No question list</p>
+    <p>No vehicles found.</p>
 {% endif %}
 {% endblock %}

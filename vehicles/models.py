@@ -7,10 +7,27 @@ class Vehicle(models.Model):
     image = models.ImageField(upload_to="vehicles")
     description = models.TextField()
     price = models.IntegerField()
+    HYBRID = "H"
+    GAS = "G"
+    ELECTRIC = "E"
+    TYPE_CHOICES = (
+        (HYBRID, 'hybrid'),
+        (GAS, 'gas'),
+        (ELECTRIC, 'electric'),
+    )
+    TYPE_ICONS = {
+        "H": "leaf",
+        "G": "tint",
+        "E": "bolt",
+    }
+    type = models.CharField(max_length=1,choices=TYPE_CHOICES,default=GAS)
     def __unicode__(self):
         return self.make + " - " + self.model
     def formatted_price(self):
         return "${:,.2f}".format(self.price);
+    def icon(self):
+        # return "ICON"
+        return self.TYPE_ICONS[self.type];
 
 class Person(models.Model):
     first_name = models.CharField(max_length=200)

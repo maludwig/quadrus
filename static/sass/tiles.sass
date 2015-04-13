@@ -2,6 +2,14 @@
 =rowWidth($count)
 	width: (100% / $count) - 3%
 
+.filter
+	width: 300px
+	display: block
+	margin: 1em auto
+	font-size: 24px
+	padding: 10px 15px
+	border-left: 5px solid grey
+	cursor: pointer
 .vehicle-container
 	max-width: 1600px
 	margin: 0 auto
@@ -13,8 +21,16 @@
 
 	position: relative
 	display: inline-block
+	overflow: hidden
 	background: white
 	background: linear-gradient(rgba(255,255,255,0.2), white 70%)
+	.vehicle-type
+		position: absolute
+		display: inline-block
+		right: 0
+		font-size: 36px
+		margin: 10px 20px
+		color: white
 	.vehicle-image
 		//position: absolute
 		width: 100%
@@ -45,7 +61,7 @@
 		font-size: 24px
 
 .vehicle-tile
-	@media all and (min-width: 840px)
+	@media all and (min-width: 640px)
 		+rowWidth(2)
-	@media all and (min-width: 1280px)
+	@media all and (min-width: 1080px)
 		+rowWidth(3)

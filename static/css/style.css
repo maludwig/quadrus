@@ -1,13 +1,16 @@
 html, body {
   min-width: 100%;
-  min-height: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
   font-family: "Exo", sans-serif; }
 
 html {
   background: url("/static/img/galaxy-starry-night.jpg");
-  background-size: cover; }
+  background-size: cover;
+  background-attachment: fixed;
+  overflow-y: scroll;
+  overflow-x: hidden; }
 
 body {
   background: none; }
@@ -24,9 +27,9 @@ nav {
   nav li {
     display: inline-block;
     height: 50px;
-    width: 47%;
-    margin: 1.5%;
-    background: white;
+    width: 45%;
+    margin-left: 3%;
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     text-align: center;
     text-transform: uppercase;
@@ -34,20 +37,28 @@ nav {
     font-size: 30px;
     font-weight: 700; }
   nav li:hover {
-    background: radial-gradient(white 40%, #220fb4); }
+    background: radial-gradient(white 40%, rgba(255, 255, 255, 0.5)); }
 
 @media all and (min-width: 480px) {
   nav {
     width: 400px; } }
-#content {
-  margin-bottom: 200px; }
-
 footer {
-  position: fixed;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.9);
   padding: 2em;
   color: #aaa; }
+  @media all and (min-width: 1080px) {
+    footer {
+      position: fixed;
+      bottom: 0; } }
+
+.filter {
+  width: 300px;
+  display: block;
+  margin: 1em auto;
+  font-size: 24px;
+  padding: 10px 15px;
+  border-left: 5px solid grey;
+  cursor: pointer; }
 
 .vehicle-container {
   max-width: 1600px;
@@ -59,8 +70,16 @@ footer {
   border-radius: 8px;
   position: relative;
   display: inline-block;
+  overflow: hidden;
   background: white;
   background: linear-gradient(rgba(255, 255, 255, 0.2), white 70%); }
+  .vehicle-tile .vehicle-type {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    font-size: 36px;
+    margin: 10px 20px;
+    color: white; }
   .vehicle-tile .vehicle-image {
     width: 100%;
     height: auto; }
@@ -88,21 +107,30 @@ footer {
     padding: 15px;
     font-size: 24px; }
 
-@media all and (min-width: 840px) {
+@media all and (min-width: 640px) {
   .vehicle-tile {
     width: 47%; } }
-@media all and (min-width: 1280px) {
+@media all and (min-width: 1080px) {
   .vehicle-tile {
     width: 30.33333%; } }
 
-.open-order-container {
-  padding-top: 1em;
-  padding-bottom: 1em;
-  background: rgba(255, 255, 255, 0.8); }
+.order-container {
+  margin: 1em 0;
+  padding: 1em 0; }
+  .order-container .small-device {
+    display: block;
+    text-align: center; }
+  @media all and (min-width: 768px) {
+    .order-container {
+      margin: 1em;
+      padding: 1em; }
+      .order-container .small-device {
+        display: none; } }
 
-.completed-order-container {
-  padding-top: 1em;
-  padding-bottom: 1em;
-  background: rgba(227, 255, 227, 0.8); }
+#open-orders {
+  background: rgba(255, 255, 255, 0.85); }
+
+#completed-orders {
+  background: rgba(227, 249, 255, 0.85); }
 
 /*# sourceMappingURL=style.css.map */

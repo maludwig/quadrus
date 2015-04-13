@@ -1,10 +1,12 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, render_to_response
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.core.urlresolvers import reverse
 from django.core import serializers
 from django.views import generic
 from django.utils import timezone
 from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import ensure_csrf_cookie
+from django.core.context_processors import csrf
 
 from vehicles.models import *
 import json
@@ -14,7 +16,6 @@ class IndexView(generic.ListView):
     template_name = 'vehicles/index.html'
 
     def get_queryset(self):
-        """Return the last five published questions."""
         return Vehicle.objects.all()
 
 def index_json(request):
@@ -24,13 +25,16 @@ def index_json(request):
     data = data[0:len(data)-1] + "]"
     return HttpResponse(data)
 
+@ensure_csrf_cookie
 def orders(request):
     open_orders = Order.objects.filter(completed=False).order_by("order_date");
     completed_orders = Order.objects.filter(completed=True).order_by("-built_date");
-    return render(request, "vehicles/orders.html", {
+    c = {
         "open_orders": open_orders,
         "completed_orders": completed_orders,
-    })
+    }
+    c.update(csrf(request))
+    return render(request, "vehicles/orders.html", c)
 
 def orders_json(request):
     open_orders = Order.objects.filter(completed=False).order_by("order_date");

@@ -6,9 +6,9 @@ nav {
   nav li {
     display: inline-block;
     height: 50px;
-    width: 47%;
-    margin: 1.5%;
-    background: white;
+    width: 45%;
+    margin-left: 3%;
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 10px;
     text-align: center;
     text-transform: uppercase;
@@ -16,7 +16,7 @@ nav {
     font-size: 30px;
     font-weight: 700; }
   nav li:hover {
-    background: radial-gradient(white 40%, #220fb4); }
+    background: radial-gradient(white 40%, rgba(255, 255, 255, 0.5)); }
 
 @media all and (min-width: 480px) {
   nav {
