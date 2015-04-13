@@ -11,3 +11,18 @@ class Vehicle(models.Model):
         return self.make + " - " + self.model
     def formatted_price(self):
         return "${:,.2f}".format(self.price);
+
+class Person(models.Model):
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    def __unicode__(self):
+        return self.first_name + " " + self.last_name
+
+class Order(models.Model):
+    customer = models.ForeignKey(Person)
+    vehicle = models.ForeignKey(Vehicle)
+    order_date = models.DateTimeField()
+    completed = models.BooleanField(default=False)
+    built_date = models.DateTimeField(blank=True,null=True)
+    def __unicode__(self):
+        return "%04i" % self.pk

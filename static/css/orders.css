@@ -1,0 +1,11 @@
+.open-order-container {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background: rgba(255, 255, 255, 0.8); }
+
+.completed-order-container {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background: rgba(227, 255, 227, 0.8); }
+
+/*# sourceMappingURL=orders.css.map */

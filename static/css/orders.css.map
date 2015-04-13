@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,qBAAqB;EACpB,WAAW,EAAE,GAAG;EAChB,cAAc,EAAE,GAAG;EACnB,UAAU,EAAE,wBAAqB;;AAElC,0BAA0B;EACzB,WAAW,EAAE,GAAG;EAChB,cAAc,EAAE,GAAG;EACnB,UAAU,EAAE,wBAAwB",
+"sources": ["../sass/orders.sass"],
+"names": [],
+"file": "orders.css"
+}

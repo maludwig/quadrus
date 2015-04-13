@@ -1,0 +1,61 @@
+{% extends "vehicles/page.html" %}
+{% block content %}
+<section class="col-md-6 open-order-container">
+    <h3>Open</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Vehicle</th>
+                <th>Ordered</th>
+                <th>Complete</th>
+            </tr>
+        </thead>
+        {% if open_orders %}
+            <tbody>
+                {% for oo in open_orders %}
+                    <tr>
+                        <th scope="row">{{ oo }}</th>
+                        <td>{{ oo.customer }}</td>
+                        <td>{{ oo.vehicle }}</td>
+                        <td>{{ oo.order_date }}</td>
+                        <td><a class="post-request" data-reload="true" href="{% url 'vehicles:fill' oo.pk %}"><i class="fa fa-check-square-o"></i></a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        {% else %}
+            <p>No open orders found</p>
+        {% endif %}
+    </table>
+</section>
+{% if completed_orders %}
+    <section class="col-md-6 completed-order-container">
+        <h3>Completed</h3>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Vehicle</th>
+                    <th>Ordered</th>
+                    <th>Built</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for co in completed_orders %}
+                    <tr>
+                        <th scope="row">{{ co }}</th>
+                        <td>{{ co.customer }}</td>
+                        <td>{{ co.vehicle }}</td>
+                        <td>{{ co.order_date }}</td>
+                        <td>{{ co.built_date }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+{% else %}
+    <p>No completed orders found</p>
+{% endif %}
+{% endblock %}
