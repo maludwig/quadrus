@@ -29,5 +29,12 @@ footer
 		position: fixed
 		bottom: 0
 
+footer.spacing
+	visibility: hidden
+	display: none
+	@media all and (min-width: 1080px)
+		display: block
+		position: static
+
 @import tiles.sass
 @import orders.sass

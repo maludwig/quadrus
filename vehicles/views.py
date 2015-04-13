@@ -57,3 +57,17 @@ def fill(request, pk):
     o.built_date = timezone.now()
     o.save()
     return HttpResponseRedirect(reverse("vehicles:orders"))
+
+@require_POST
+def buy(request, pk):
+    first = request.POST['first']
+    last = request.POST['last']
+    v = get_object_or_404(Vehicle, pk=pk)
+    try:
+        p = Person.objects.get(first_name=first, last_name=last)
+    except (KeyError, Person.DoesNotExist):
+        p = Person(first_name=first,last_name=last)
+        p.save()
+    o = Order(customer=p, vehicle=v, order_date=timezone.now())
+    o.save()
+    return HttpResponseRedirect(reverse("vehicles:orders"))

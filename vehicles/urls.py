@@ -8,4 +8,5 @@ urlpatterns = patterns('',
     url(r'^orders/?$', views.orders, name='orders'),
     url(r'^json/orders/?$', views.orders_json, name='orders_json'),
     url(r'^orders/fill/(?P<pk>\d+)/?$', views.fill, name='fill'),
+    url(r'^buy/(?P<pk>\d+)/?$', views.buy, name='buy'),
 )

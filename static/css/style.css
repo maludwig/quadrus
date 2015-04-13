@@ -51,6 +51,14 @@ footer {
       position: fixed;
       bottom: 0; } }
 
+footer.spacing {
+  visibility: hidden;
+  display: none; }
+  @media all and (min-width: 1080px) {
+    footer.spacing {
+      display: block;
+      position: static; } }
+
 .filter {
   width: 300px;
   display: block;
@@ -92,16 +100,22 @@ footer {
     font-weight: 700; }
   .vehicle-tile .vehicle-description {
     padding: 1em;
-    height: 100%;
+    height: 80%;
     top: 0;
     overflow: hidden;
     position: absolute;
-    background: #0f0c52;
+    background: linear-gradient(#0f0c52 70%, rgba(15, 12, 82, 0));
     color: white;
     opacity: 0;
     transition: 0.5s; }
   .vehicle-tile:hover .vehicle-description {
     opacity: 0.9; }
+  .vehicle-tile .vehicle-order {
+    display: inline-block;
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    cursor: pointer; }
   .vehicle-tile .vehicle-price {
     float: right;
     padding: 15px;

@@ -11,6 +11,6 @@ class VehicleInline(admin.TabularInline):
     model = Vehicle
 
 class OrderAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('customer', 'vehicle', 'order_date', 'completed')
 
 admin.site.register(Order, OrderAdmin)
