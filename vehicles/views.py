@@ -59,6 +59,14 @@ def fill(request, pk):
     return HttpResponseRedirect(reverse("vehicles:orders"))
 
 @require_POST
+def fill_json(request, pk):
+    r = fill(request,pk)
+    if(r.status_code != 404):
+        return HttpResponseRedirect(reverse("vehicles:orders_json"))
+    else:
+        return r
+
+@require_POST
 def buy(request, pk):
     first = request.POST['first']
     last = request.POST['last']
@@ -71,3 +79,11 @@ def buy(request, pk):
     o = Order(customer=p, vehicle=v, order_date=timezone.now())
     o.save()
     return HttpResponseRedirect(reverse("vehicles:orders"))
+
+@require_POST
+def buy_json(request, pk):
+    r = buy(request,pk)
+    if(r.status_code != 404):
+        return HttpResponseRedirect(reverse("vehicles:orders_json"))
+    else:
+        return r
