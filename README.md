@@ -20,3 +20,9 @@ python manage.py runserver
 ```
 
 The server should run on port 8000. You should be able to visit http://localhost:8000/ to see the site.
+
+## Setting up a production webserver
+
+I personally chose Apache 2.4 to serve this project. Hosted in the AWS Cloud, on Amazon EC2 (VPS), with an Amazon RDS MySQL instance covering the backend database. The /static and /media files are hosted direct from Apache, the fancy Django is hosted with WSGI, Python 2.7, Django 1.7. Version control is with git, hosted on GitHub, obviously, because you're reading this. Vehicles, Orders, and People can be managed through the Django Admin page (http://quadruspracticum.com/admin/) with the username "admin" and the password "!QAZasas4867". The MySQL backend is easily maintained with phpMyAdmin (http://quadruspracticum.com/pma/), with the username "root" and the password "!QAZasas4867".  Image uploads are handled in part by Pillow. The MySQL connector is "mysqlclient".
+
+Over the course of the day, I'll be setting up an ElastiCache (memcached) server to decrease page load times and processor load. If you're seeing this message, I haven't gotten that set up yet.
