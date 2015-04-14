@@ -21,6 +21,7 @@
     <section class="vehicle-container">
         {# This code doesn't look very pretty, because having any whitespace between articles will render that whitespace. Pardon the formatting. #}
         {% for v in vehicle_list %}<article class="vehicle-tile {{ v.get_type_display }}">
+                {# The visible tile on the grid #}
                 <div class="vehicle-type">
                     <i class="fa fa-{{ v.icon }}"></i>
                 </div>
@@ -34,6 +35,7 @@
                 </div>
                 <a href="#modal{{ v.id }}"><h4 class="vehicle-order btn btn-default btn-lg">Order now</h4></a>
 
+                {# The popup form #}
                 <div class="remodal" data-remodal-id="modal{{ v.id }}">
                     <h3>Ordering the {{ v.make }} {{v.model}}</h3>
                     <p>{{ v.description }}</p>
